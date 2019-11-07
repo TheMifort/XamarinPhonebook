@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:XamarinPhonebook.ViewModels;assembly=XamarinPhonebook"
              mc:Ignorable="d"
-             x:Class="XamarinPhonebook.Views.Phonebook">
+             x:Class="XamarinPhonebook.Views.Phonebook"
+             FlowDirection="LeftToRight">
     <ContentPage.BindingContext>
         <viewModels:PhonebookViewModel/>
     </ContentPage.BindingContext>
@@ -22,6 +23,7 @@
                           ImageSource="{Binding PhotoThumbnailUrl}"
                           Text="{Binding FullName}"
                           TextColor="Black"
+                          
                       />
                   </DataTemplate>
               </ListView.ItemTemplate>
