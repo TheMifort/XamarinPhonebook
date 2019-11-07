@@ -31,6 +31,9 @@
 
     <!-- Your Pages -->
     <TabBar>
+        <Tab Title="Phonebook" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Phonebook}" />
+        </Tab>
         <Tab Title="Browse" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
         </Tab>
