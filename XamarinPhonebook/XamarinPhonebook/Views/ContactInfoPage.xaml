@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:XamarinPhonebook.Models;assembly=XamarinPhonebook"
+             xmlns:viewModels="clr-namespace:XamarinPhonebook.ViewModels;assembly=XamarinPhonebook"
+             mc:Ignorable="d"
+             x:Class="XamarinPhonebook.Views.ContactInfoPage">
+    <ContentPage.BindingContext>
+        <viewModels:ContactViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="8,8,8,8">
+            <Image HeightRequest="140" Source="{Binding Contact.PhotoLargeUrl}"/>
+            <TableView>
+                <TableSection>
+                    <EntryCell Label="Имя" IsEnabled="False" Text="{Binding Contact.FirstName}" />
+                    <EntryCell Label="Фамилия" IsEnabled="False" Text="{Binding Contact.LastName}" />
+                    <EntryCell Label="Номер телефона" IsEnabled="False" Text="{Binding Contact.PhoneNumber}" />
+                    <EntryCell Label="Email" IsEnabled="False" Text="{Binding Contact.Email}" />
+                </TableSection>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinPhonebook.Models;
 using XamarinPhonebook.ViewModels;
 
 namespace XamarinPhonebook.Views
@@ -27,6 +28,12 @@ namespace XamarinPhonebook.Views
             if (!PhonebookViewModel.Contacts.Any())
                 PhonebookViewModel.LoadContactsCommand.Execute(null);
             base.OnAppearing();
+        }
+
+        private async void PhoneList_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var contact = e.Item as Contact;
+            await Navigation.PushAsync(new ContactInfoPage(new ContactViewModel {Contact = contact}));
         }
     }
 }

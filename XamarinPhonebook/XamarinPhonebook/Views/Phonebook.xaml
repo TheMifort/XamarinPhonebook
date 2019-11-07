@@ -16,7 +16,8 @@
                     HasUnevenRows="True"
                     ItemsSource="{Binding Contacts}"
                     IsRefreshing="{Binding IsRefreshing}"
-                    SelectionMode="None">
+                    SelectionMode="None"
+                    ItemTapped="PhoneList_OnItemTapped">
               <ListView.ItemTemplate>
                   <DataTemplate>
                       <ImageCell
