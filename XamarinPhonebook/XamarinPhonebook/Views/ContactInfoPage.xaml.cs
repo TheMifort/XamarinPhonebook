@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Stormlion.PhotoBrowser;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPhonebook.ViewModels;
@@ -17,7 +18,7 @@ namespace XamarinPhonebook.Views
             _contactViewModel = contactViewModel;
             InitializeComponent();
             BindingContext = _contactViewModel;
-                //Call.Icon = Iconize.FindIconForKey("fas-address-book").Key;
+            //Call.Icon = Iconize.FindIconForKey("fas-address-book").Key;
         }
 
         private void ImageTapped(object sender, EventArgs e)
@@ -34,6 +35,12 @@ namespace XamarinPhonebook.Views
                 },
                 EnableGrid = true
             }.Show();
+        }
+
+        private async void CallButtonOnClicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync($"sms:{_contactViewModel.Contact.PhoneNumber}");
+            //await Launcher.TryOpenAsync($"sms:{_contactViewModel.Contact.PhoneNumber}");
         }
     }
 }

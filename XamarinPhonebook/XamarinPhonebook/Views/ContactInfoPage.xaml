@@ -4,9 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:XamarinPhonebook.Models;assembly=XamarinPhonebook"
              xmlns:viewModels="clr-namespace:XamarinPhonebook.ViewModels;assembly=XamarinPhonebook"
-             xmlns:services="clr-namespace:XamarinPhonebook.Services;assembly=XamarinPhonebook"
              mc:Ignorable="d"
              x:Class="XamarinPhonebook.Views.ContactInfoPage">
     <ContentPage.BindingContext>
@@ -30,8 +28,26 @@
                 </TableView>
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="End" Padding="0,0,0,8">
-                <Button Text="&#xf095;" BackgroundColor="#33D3E4" HeightRequest="60" WidthRequest="60" FontSize="30" CornerRadius="30" FontFamily="{StaticResource FontAwesomeSolid}" HorizontalOptions="CenterAndExpand" />
-                <Button Text="&#xf0e0;" BackgroundColor="#33D3E4" HeightRequest="60" WidthRequest="60" FontSize="30" CornerRadius="30" FontFamily="{StaticResource FontAwesomeSolid}" HorizontalOptions="CenterAndExpand" />
+                <Button Text="&#xf095;"
+                        BackgroundColor="#33D3E4"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        FontSize="30"
+                        CornerRadius="30"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        HorizontalOptions="CenterAndExpand" 
+                        x:Name="CallButton"
+                        Command="{Binding Call}"
+                        />
+                <Button Text="&#xf0e0;"
+                        BackgroundColor="#33D3E4"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        FontSize="30"
+                        CornerRadius="30"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        HorizontalOptions="CenterAndExpand" 
+                        Command="{Binding Sms}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
