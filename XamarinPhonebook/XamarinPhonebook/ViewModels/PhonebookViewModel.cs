@@ -10,17 +10,9 @@ namespace XamarinPhonebook.ViewModels
 {
     public class PhonebookViewModel : BaseViewModel
     {
-        private bool _isRefreshing;
-
         public ObservableCollection<Contact> Contacts { get; set; } = new ObservableCollection<Contact>();
         public ICommand LoadContactsCommand { get; set; }
-
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set => SetProperty(ref _isRefreshing, value);
-        }
-
+        
         public PhonebookViewModel()
         {
             LoadContactsCommand = new Command(async () =>

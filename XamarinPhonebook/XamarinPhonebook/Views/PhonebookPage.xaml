@@ -16,7 +16,6 @@
           <ListView x:Name="PhoneList"
                     HasUnevenRows="True"
                     ItemsSource="{Binding Contacts}"
-                    IsRefreshing="{Binding IsRefreshing}"
                     SelectionMode="None"
                     ItemTapped="PhoneList_OnItemTapped">
               <ListView.ItemTemplate>
@@ -25,7 +24,6 @@
                           ImageSource="{Binding PhotoThumbnailUrl}"
                           Text="{Binding FullName}"
                           TextColor="Black"
-                          
                       />
                   </DataTemplate>
               </ListView.ItemTemplate>
