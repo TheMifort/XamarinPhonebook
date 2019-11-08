@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Stormlion.PhotoBrowser;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,6 +17,7 @@ namespace XamarinPhonebook.Views
             _contactViewModel = contactViewModel;
             InitializeComponent();
             BindingContext = _contactViewModel;
+                //Call.Icon = Iconize.FindIconForKey("fas-address-book").Key;
         }
 
         private void ImageTapped(object sender, EventArgs e)
