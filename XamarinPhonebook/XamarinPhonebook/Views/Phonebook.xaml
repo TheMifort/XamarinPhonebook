@@ -6,7 +6,8 @@
              xmlns:viewModels="clr-namespace:XamarinPhonebook.ViewModels;assembly=XamarinPhonebook"
              mc:Ignorable="d"
              x:Class="XamarinPhonebook.Views.Phonebook"
-             FlowDirection="LeftToRight">
+             FlowDirection="LeftToRight"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.BindingContext>
         <viewModels:PhonebookViewModel/>
     </ContentPage.BindingContext>

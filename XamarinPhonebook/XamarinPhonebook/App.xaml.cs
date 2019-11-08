@@ -1,20 +1,15 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using XamarinPhonebook.Services;
+﻿using Xamarin.Forms;
 using XamarinPhonebook.Views;
 
 namespace XamarinPhonebook
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new Phonebook());
         }
 
         protected override void OnStart()

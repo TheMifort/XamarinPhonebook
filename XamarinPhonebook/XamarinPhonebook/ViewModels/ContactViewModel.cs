@@ -13,7 +13,6 @@ namespace XamarinPhonebook.ViewModels
 
         public ContactViewModel()
         {
-            Title = "Контакт";
             Call = new Command(async () => { await Launcher.OpenAsync($"tel:{Contact.PhoneNumber}"); });
             Sms = new Command(async () => { await Launcher.OpenAsync($"sms:{Contact.PhoneNumber}"); });
         }
