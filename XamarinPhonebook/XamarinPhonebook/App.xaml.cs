@@ -9,7 +9,7 @@ namespace XamarinPhonebook
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Phonebook());
+            MainPage = new NavigationPage(new PhonebookPage());
         }
 
         protected override void OnStart()

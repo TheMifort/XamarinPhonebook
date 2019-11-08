@@ -19,12 +19,18 @@
     <EmbeddedResource Update="Views\ContactInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Phonebook.xaml">
+    <EmbeddedResource Update="Views\PhonebookPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PhonebookPage.xaml.cs">
+      <DependentUpon>PhonebookPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

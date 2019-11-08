@@ -7,11 +7,11 @@ using XamarinPhonebook.ViewModels;
 namespace XamarinPhonebook.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Phonebook : ContentPage
+    public partial class PhonebookPage : ContentPage
     {
         public PhonebookViewModel PhonebookViewModel { get; set; }
 
-        public Phonebook()
+        public PhonebookPage()
         {
             PhonebookViewModel = new PhonebookViewModel();
             InitializeComponent();
