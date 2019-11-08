@@ -17,7 +17,8 @@
                     HasUnevenRows="True"
                     ItemsSource="{Binding Contacts}"
                     SelectionMode="None"
-                    ItemTapped="PhoneList_OnItemTapped">
+                    ItemTapped="PhoneList_OnItemTapped"
+                    ItemAppearing="PhoneList_OnItemAppearing">
               <ListView.ItemTemplate>
                   <DataTemplate>
                       <ImageCell

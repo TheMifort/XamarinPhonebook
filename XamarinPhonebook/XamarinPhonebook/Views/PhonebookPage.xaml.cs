@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPhonebook.Models;
 using XamarinPhonebook.ViewModels;
@@ -21,8 +20,7 @@ namespace XamarinPhonebook.Views
 
         protected override void OnAppearing()
         {
-            if (!PhonebookViewModel.Contacts.Any())
-                PhonebookViewModel.LoadContactsCommand.Execute(null);
+            PhonebookViewModel.LoadContactsCommand.Execute(null);
             base.OnAppearing();
         }
 
@@ -30,6 +28,17 @@ namespace XamarinPhonebook.Views
         {
             var contact = e.Item as Contact;
             await Navigation.PushAsync(new ContactInfoPage(new ContactViewModel {Contact = contact}));
+        }
+
+        private void PhoneList_OnItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            if (PhonebookViewModel.Contacts.Count == 0)
+                return;
+
+            if (e.Item == PhonebookViewModel.Contacts[PhonebookViewModel.Contacts.Count - 1])
+            {
+                PhonebookViewModel.LoadContactsCommand.Execute(null);
+            }
         }
     }
 }
