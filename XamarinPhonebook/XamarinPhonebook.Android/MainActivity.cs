@@ -17,6 +17,8 @@ namespace XamarinPhonebook.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            Stormlion.PhotoBrowser.Droid.Platform.Init(this);
+
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");

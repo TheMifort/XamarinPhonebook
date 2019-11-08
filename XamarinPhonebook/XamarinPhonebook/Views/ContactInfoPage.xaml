@@ -12,7 +12,11 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="8,8,8,8">
-            <Image HeightRequest="140" Source="{Binding Contact.PhotoLargeUrl}"/>
+            <Image HeightRequest="140" Source="{Binding Contact.PhotoLargeUrl}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ImageTapped"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <TableView>
                 <TableSection>
                     <EntryCell Label="Имя" IsEnabled="False" Text="{Binding Contact.FirstName}" />

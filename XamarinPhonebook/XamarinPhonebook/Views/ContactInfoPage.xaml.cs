@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Stormlion.PhotoBrowser;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPhonebook.ViewModels;
 
@@ -14,6 +18,22 @@ namespace XamarinPhonebook.Views
             _contactViewModel = contactViewModel;
             InitializeComponent();
             BindingContext = _contactViewModel;
+        }
+
+        private void ImageTapped(object sender, EventArgs e)
+        {
+            new PhotoBrowser
+            {
+                Photos = new List<Photo>
+                {
+                    new Photo
+                    {
+                        URL = _contactViewModel.Contact.PhotoLargeUrl,
+                        Title = _contactViewModel.Contact.FullName
+                    }
+                },
+                EnableGrid = true
+            }.Show();
         }
     }
 }
