@@ -13,7 +13,7 @@
                 <On Platform="Android"
                     Value="FontAwesome5Solid.otf#Regular" />
                 <On Platform="iOS"
-                    Value="FontAwesome5Solid" />
+                    Value="FontAwesome5Free-Solid" />
             </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>

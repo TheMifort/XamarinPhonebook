@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="XamarinPhonebook.Views.PhonebookPage"
              FlowDirection="LeftToRight"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasNavigationBar="true">
     <ContentPage.BindingContext>
         <viewModels:PhonebookViewModel/>
     </ContentPage.BindingContext>
