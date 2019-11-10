@@ -7,6 +7,6 @@ namespace XamarinPhonebook.Services.Abstact
     {
         bool IsLoaded { get; }
         Task LoadAsync(int count);
-        Task<List<T>> GetAsync(int count);
+        Task<List<T>> GetAsync(int count, string search = default);
     }
 }

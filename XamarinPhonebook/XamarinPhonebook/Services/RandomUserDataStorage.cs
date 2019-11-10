@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RandomUserSharp;
+using XamarinPhonebook.Helpers;
 using XamarinPhonebook.Models;
 using XamarinPhonebook.Services.Abstact;
 
@@ -11,7 +13,7 @@ namespace XamarinPhonebook.Services
     {
         private List<Contact> _contacts;
         private int _currentNumber;
-
+        private string _currentSearch;
         public bool IsLoaded { get; private set; }
 
         public async Task LoadAsync(int count)
@@ -30,14 +32,31 @@ namespace XamarinPhonebook.Services
                     PhotoLargeUrl = e.PictureInfo.Large.AbsoluteUri
                 }).ToList(); //TODO Automapper
             }
+
             IsLoaded = true;
         }
 
-        public Task<List<Contact>> GetAsync(int count)
+        public Task<List<Contact>> GetAsync(int count, string search = default)
         {
-            var result = _contacts.Skip(_currentNumber).Take(count).ToList();
+            if (_currentSearch != search)
+            {
+                _currentNumber = 0;
+                _currentSearch = search;
+            }
+
+
+            var result = _contacts.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                var splitted = search.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
+                result = splitted.Aggregate(result, (current, searchEntry) => current.Where(e => e.FirstName.ContainsIgnoreCasing(searchEntry) || e.LastName.ContainsIgnoreCasing(searchEntry)));
+            }
+
+            result = result.Skip(_currentNumber).Take(count);
+
             _currentNumber += count;
-            return Task.FromResult(result);
+            return Task.FromResult(result.ToList());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Linq;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPhonebook.Models;
 using XamarinPhonebook.ViewModels;
@@ -21,6 +22,11 @@ namespace XamarinPhonebook.Views
         protected override void OnAppearing()
         {
             PhonebookViewModel.LoadContactsCommand.Execute(null);
+            MessagingCenter.Subscribe<PhonebookViewModel>(this,"ScrollToTop", e =>
+            {
+                PhoneList.ScrollTo(e.Contacts.FirstOrDefault(), ScrollToPosition.MakeVisible,
+                    false);
+            });
             base.OnAppearing();
         }
 

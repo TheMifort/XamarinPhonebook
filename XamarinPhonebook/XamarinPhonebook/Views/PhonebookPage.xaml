@@ -13,6 +13,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
       <StackLayout>
+          <Entry Placeholder="Поиск" Text="{Binding SearchText}"/>
           <ListView x:Name="PhoneList"
                     HasUnevenRows="True"
                     ItemsSource="{Binding Contacts}"
