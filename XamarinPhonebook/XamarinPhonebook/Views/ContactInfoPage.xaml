@@ -21,6 +21,7 @@
                 <TableView>
                     <TableSection>
                         <EntryCell Label="Имя" IsEnabled="False" Text="{Binding Contact.FirstName}" />
+                        <EntryCell Label="Отчество" IsEnabled="False" Text="{Binding Contact.MiddleName}" />
                         <EntryCell Label="Фамилия" IsEnabled="False" Text="{Binding Contact.LastName}" />
                         <EntryCell Label="Номер телефона" IsEnabled="False" Text="{Binding Contact.PhoneNumber}" />
                         <EntryCell Label="Email" IsEnabled="False" Text="{Binding Contact.Email}" />

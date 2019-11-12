@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RandomUserSharp;
+using RandomUserRuSharp;
 using XamarinPhonebook.Helpers;
 using XamarinPhonebook.Models;
 using XamarinPhonebook.Services.Abstact;
@@ -18,20 +18,20 @@ namespace XamarinPhonebook.Services
 
         public async Task LoadAsync(int count)
         {
-            using (var randomUserClient = new RandomUserClient())
+            var randomUserClient = new RandomUserRuClient();
+
+            var contacts = await randomUserClient.GetRandomUsersAsync(count);
+            _contacts = contacts.Select(e => new Contact
             {
-                var contacts = await randomUserClient.GetRandomUsersAsync(count);
-                _contacts = contacts.Select(e => new Contact
-                {
-                    Email = e.Email,
-                    FirstName = e.Name.First,
-                    LastName = e.Name.Last,
-                    PhoneNumber = e.Phone,
-                    PhotoThumbnailUrl = e.PictureInfo.Thumbnail.AbsoluteUri,
-                    PhotoMediumUrl = e.PictureInfo.Medium.AbsoluteUri,
-                    PhotoLargeUrl = e.PictureInfo.Large.AbsoluteUri
-                }).ToList(); //TODO Automapper
-            }
+                Email = e.Email,
+                FirstName = e.Name.First,
+                LastName = e.Name.Last,
+                MiddleName = e.Name.Middle,
+                PhoneNumber = "+" + e.Cell,
+                PhotoThumbnailUrl = e.Picture.Thumbnail.AbsoluteUri,
+                PhotoMediumUrl = e.Picture.Medium.AbsoluteUri,
+                PhotoLargeUrl = e.Picture.Large.AbsoluteUri
+            }).ToList(); //TODO Automapper
 
             IsLoaded = true;
         }
@@ -49,8 +49,12 @@ namespace XamarinPhonebook.Services
 
             if (!string.IsNullOrEmpty(search))
             {
-                var splitted = search.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
-                result = splitted.Aggregate(result, (current, searchEntry) => current.Where(e => e.FirstName.ContainsIgnoreCasing(searchEntry) || e.LastName.ContainsIgnoreCasing(searchEntry)));
+                var splitted = search.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                result = splitted.Aggregate(result,
+                    (current, searchEntry) => current.Where(e =>
+                        e.FirstName.ContainsIgnoreCasing(searchEntry)
+                        || e.LastName.ContainsIgnoreCasing(searchEntry)
+                        || e.MiddleName.ContainsIgnoreCasing(searchEntry)));
             }
 
             result = result.Skip(_currentNumber).Take(count);

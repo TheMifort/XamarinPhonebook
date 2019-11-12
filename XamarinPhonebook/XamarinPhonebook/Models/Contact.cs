@@ -4,7 +4,8 @@
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName => LastName + " " + FirstName;
+        public string MiddleName { get; set; }
+        public string FullName => LastName + " " + FirstName + " " + MiddleName;
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string PhotoThumbnailUrl { get; set; }
